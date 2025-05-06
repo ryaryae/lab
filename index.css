@@ -1,0 +1,140 @@
+body {
+  margin: 0;
+  background-color: #FA8072;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Courier New', monospace;
+  overflow: hidden;
+  position: relative;
+}
+
+.main-flower-wrapper {
+  position: absolute;
+  top: 15vh;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 5;
+}
+
+
+.main-flower {
+  position: relative;
+  width: 30vmin; 
+  height: 30vmin;
+  min-width: 150px;
+  min-height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+
+.petal {
+  --size: 50%;
+  width: var(--size);
+  height: var(--size);
+  background: #D30000;
+  position: absolute;
+  border-radius: 50% 50% 0 0;
+  transform-origin: bottom center;
+  transform: rotate(var(--angle)) translateY(0);
+  opacity: 0;
+  animation: openPetal 1.5s forwards;
+}
+
+.petal:nth-child(1) { animation-delay: 0.2s; }
+.petal:nth-child(2) { animation-delay: 0.4s; }
+.petal:nth-child(3) { animation-delay: 0.6s; }
+.petal:nth-child(4) { animation-delay: 0.8s; }
+.petal:nth-child(5) { animation-delay: 1s; }
+
+@keyframes openPetal {
+  0% {
+    transform: rotate(var(--angle)) translateY(0);
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(var(--angle)) translateY(-40%);
+    opacity: 1;
+  }
+}
+
+.center {
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  width: 40%;
+  height: 40%;
+  background: #FF2400;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.message {
+  font-size: 5vmin; 
+  margin-top: 13vmin; 
+  color: #D30000;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.falling-flower {
+  position: absolute;
+  top: -10vh;
+  width: 10vmin; 
+  height: 10vmin; 
+  animation: fall linear infinite;
+  animation-duration: calc(4s + 2s * var(--speed));
+  left: var(--left);
+  z-index: 1;
+  opacity: 0.9;
+}
+
+.falling-flower .flower {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.falling-flower .petal {
+  --size: 50%;
+  width: var(--size);
+  height: var(--size);
+  background: #D30000;
+  position: absolute;
+  border-radius: 50% 50% 0 0;
+  transform-origin: bottom center;
+  transform: rotate(var(--angle)) translateY(-40%);
+  opacity: 1;
+  animation: none;
+}
+
+.falling-flower .center {
+  position: absolute;
+  top: 50%;
+  left: 25%;
+  width: 40%;
+  height: 40%;
+  background: #FF2400;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0vh);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh);
+    opacity: 0;
+  }
+}

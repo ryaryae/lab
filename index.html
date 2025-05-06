@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily reminder!</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  
+  <div class="main-flower-wrapper">
+    <div class="flower main-flower">
+      <div class="petal" style="--angle: 0deg;"></div>
+      <div class="petal" style="--angle: 72deg;"></div>
+      <div class="petal" style="--angle: 144deg;"></div>
+      <div class="petal" style="--angle: 216deg;"></div>
+      <div class="petal" style="--angle: 288deg;"></div>
+      <div class="center"></div>
+    </div>
+    <div class="message">Take care always, lab!</div>
+  </div>
+
+  <script>
+    for (let i = 0; i < 20; i++) {
+      const flower = document.createElement('div');
+      flower.className = 'falling-flower';
+      flower.style.setProperty('--left', Math.random() * 100 + 'vw');
+      flower.style.setProperty('--speed', Math.random().toFixed(2));
+
+      flower.innerHTML = `
+        <div class="flower falling-flower-petals">
+          <div class="petal" style="--angle: 0deg;"></div>
+          <div class="petal" style="--angle: 72deg;"></div>
+          <div class="petal" style="--angle: 144deg;"></div>
+          <div class="petal" style="--angle: 216deg;"></div>
+          <div class="petal" style="--angle: 288deg;"></div>
+          <div class="center"></div>
+        </div>
+      `;
+
+      document.body.appendChild(flower);
+    }
+  </script>
+</body>
+</html>
